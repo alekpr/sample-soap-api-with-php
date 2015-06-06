@@ -2,11 +2,12 @@
 require_once 'init.php';
 use Zend\Soap\AutoDiscover;
 use Zend\Soap\Server as SoapServer;
+use Libs\MyClass\BaseSoap;
 
 
 // Helloworld class used defined web service method
 // Remark : "Zend\Soap\AutoDiscover" use function description , @param and @return to generate WSDL. 
-class Helloworld 
+class Helloworld extends BaseSoap
 {
 	public function __construct()
 	{
@@ -18,7 +19,12 @@ class Helloworld
 	* @return string Hello ,$name
   	*/
 	public function SayHello($name){
-		return "Hello, ".$name;
+		if ($this->Authenticated) {
+			return "Hello, ".$name;
+		}else{
+			return "Permission denied";
+		}
+		
 	}
 }
 
