@@ -20,10 +20,10 @@ class BaseSoap
      * @param string username
      * @param string key
      */
-    public function Authentication( $username, $keyparse ){
+    public function Authentication( $username, $key ){
         // Store username for logging
         $this->Username = $username;
-        $auth = new Auth( $username, $keyparse, get_class($this) );
+        $auth = new Auth( $username, $key, get_class($this) );
         if( $auth->IsValid() ){
             $this->Authenticated = true;
         } else {

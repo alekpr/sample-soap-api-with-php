@@ -16,13 +16,13 @@ class Helloworld extends BaseSoap
    	* SayHello Function
 	* Use test soap service
 	* @param string $name
-	* @return string Hello ,$name
+	* @return array $mixed
   	*/
 	public function SayHello($name){
 		if ($this->Authenticated) {
-			return "Hello, ".$name;
+			return array("success"=>true,"message"=>"Hello, ".$name);
 		}else{
-			return "Permission denied";
+			return array("success"=>false,"message"=>"Permission denied");
 		}
 		
 	}
